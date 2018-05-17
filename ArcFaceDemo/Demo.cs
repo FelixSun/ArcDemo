@@ -37,7 +37,8 @@ namespace FaceRecognization
             }
             ArcFace.Staff staff = new ArcFace.Staff();
             staff = staffs.Find(s => s.StaffID == Main.Id);
-            Panel panel = new Panel();
+            //Panel panel = new Panel();
+            var panel = this.panel1;
             panel.AutoSize = true;
             panel.Dock = DockStyle.Fill;
             panel.BackgroundImage = new Bitmap("D:\\FeatureData\\readydata\\seat.png");
@@ -54,7 +55,6 @@ namespace FaceRecognization
             panel.Controls.Add(picbox);
 
             //姓名lable标签
-            //Brown
             Label label = new Label();
             label.Text = staff.Name;
             label.BackColor = Color.Brown;
@@ -78,12 +78,32 @@ namespace FaceRecognization
             
             this.Controls.Add(panel);
 
+           
         }
 
         public virtual void ReflashDemo()
         {
-            InitializeComponent();
+            DS(this.panel1);
             Demo_Load(this, null);
+            
+        }
+        private void DS(Control item)
+        {
+            Queue<Control> query = new Queue<Control>();
+            for (var i = 0; i < item.Controls.Count; i++)
+            {
+                if (item.Controls[i].HasChildren)
+                {
+                    DS(item.Controls[i]);
+                }else
+                {
+                    query.Enqueue(item.Controls[i]);
+                }
+            }
+            while (query.Count != 0)
+            {
+                query.Dequeue().Dispose();
+            }
         }
 
     }

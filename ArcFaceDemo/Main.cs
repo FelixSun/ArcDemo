@@ -63,6 +63,7 @@ namespace FaceRecognization
 
         Task _MatchTask;
         Demo demo = new Demo();
+        Int64 num = 1;
 
         public Main()
         {
@@ -177,12 +178,21 @@ namespace FaceRecognization
                         {
                             System.Threading.Thread.Sleep(1000);
                             Id = staff.StaffID;
-                            //先关闭在打开窗体                          
-                            if (demo != null)
-                                demo.Close();
-                            demo = new Demo();
-                            demo.Show();
+                            //先关闭在打开窗体     
+                            //if (demo != null)
+                            //    demo.Close();
+                            //demo = new Demo();
+                            //demo.Show();
 
+                            if (num == 1)
+                            {
+                                demo.Show();
+                            }
+                            else
+                            {
+                                demo.ReflashDemo();
+                            }
+                            num += 1;
                         }
                     }
                     else
