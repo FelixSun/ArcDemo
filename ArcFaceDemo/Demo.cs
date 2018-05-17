@@ -41,7 +41,7 @@ namespace FaceRecognization
             var panel = this.panel1;
             panel.AutoSize = true;
             panel.Dock = DockStyle.Fill;
-            panel.BackgroundImage = new Bitmap("D:\\FeatureData\\readydata\\seat.png");
+            panel.BackgroundImage = new Bitmap("C:\\FeatureData\\readydata\\seat.png");
             panel.BackgroundImageLayout = ImageLayout.Center;
             panel.BackColor = Color.AliceBlue;
             panel.Location = new Point(0, 0);
